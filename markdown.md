@@ -102,6 +102,7 @@ Markdown 支持两种形式的链接语法： 行内式和参考式两种形式�
     [This link](http://example.net/) has no title attribute.不带title的写法
     See my [About](/about/) page for details.先对路径写法
     This is [an example][id] reference-style link. id表示法
+    id表示法，需要把id写入文件的某个位置，页面渲染时id不会被显示出来
     [id]: http://example.com/  "Optional Title Here"
     简易id写法[google][]
     [google]: http://google.com/        "Google"
