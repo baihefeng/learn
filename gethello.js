@@ -1,7 +1,8 @@
 const Hello = require("./hello");
-let _h = new Hello();
-_h.sayHello();
+//let _h = new Hello();
+Hello.sayHello();
 
-_h.setName("neo");
+Hello.setName("neo.white");
 
-_h.sayHello();
+Hello.sayHello();
+console.log(Hello.getProp().name);
