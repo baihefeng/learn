@@ -1,4 +1,7 @@
-const Hello = require("./hello");
+const Hello = require("./hello"),
+	path = require("path");
+console.log(__dirname);
+console.log(path.basename(__dirname));
 //let _h = new Hello();
 Hello.sayHello();
 

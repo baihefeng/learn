@@ -4,6 +4,7 @@
   "description": "nodejs learning",
   "main": "index.js",
   "scripts": {
+    "start": "supervisor index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "neo.white",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/baihefeng/learn/issues"
   },
-  "homepage": "https://github.com/baihefeng/learn#readme"
+  "homepage": "https://github.com/baihefeng/learn#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
