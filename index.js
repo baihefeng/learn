@@ -1,47 +1,25 @@
-const http = require("http"),
-      path = require("path"),
-      util = require("util"),
-      fs   = require("fs"),
-	  url  = require("url"),
-      net  = require("net"),
-	  cfg  = require("./config")();
+var http = require('http');
 
-http.createServer((req,res) => {
-	let pathname = url.parse(req.url).pathname;
-	console.log(`Request for ${pathname} received.`);
-	if(!pathname.substr(1)){
-		pathname = pathname + "home.html";
-	}
-	fs.readFile(pathname.substr(1),'utf-8',(err,data) => {
-		if(err){
-			console.log(err);
-			res.writeHead(404,{"Content-Type" : "text/html"});
-		}else{
-			console.log(data);
-			res.writeHead(200,{"Content-Type" : "text/html"});
-			res.write(data.toString());
-		}
-		res.end();
-	});
-}).listen(cfg.port);
-
-/*let agent = new http.Agent({
-    keepAlive:true,
-    maxSockets : 100,
-    maxFreeSockets :100
-});
-
-let options = {
-    hostname:"localhost",
-    port:3000,
-    path:"/"
+// 用于请求的选项
+var options = {
+   host: 'localhost',
+   port: '8081',
+   path: '/src/js/es6.lesson1.js'
 };
-options.agent = agent;
-http.request(options,()=>{
-    console.log(this)
-});
-http.createServer((req,res)=>{
-    res.writeHead(200,{'Content-Type':'text/plain'});
-    res.end("OK");
-}).listen(3000);*/
 
+// 处理响应的回调函数
+var callback = function(response){
+   // 不断更新数据
+   var body = '';
+   response.on('data', function(data) {
+      body += data;
+   });
+
+   response.on('end', function() {
+      // 数据接收完成
+      console.log(body);
+   });
+}
+// 向服务端发送请求
+var req = http.request(options, callback);
+req.end();
